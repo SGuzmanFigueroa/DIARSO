@@ -1,4 +1,4 @@
-// Cambia entre secciones principales (cliente / interno / login)
+// Cambiar entre secciones principales (cliente / interno / login)
 function showSection(id) {
   const sections = {
     cliente: document.getElementById('section-cliente'),
@@ -7,9 +7,8 @@ function showSection(id) {
   };
 
   // Ocultar todas las secciones
-  for (const key in sections) {
-    sections[key].classList.remove('active');
-  }
+  Object.values(sections).forEach(sec => sec.classList.remove('active'));
+
   // Mostrar la sección seleccionada
   sections[id].classList.add('active');
 
@@ -23,7 +22,25 @@ function showSection(id) {
   if (id === 'login') document.getElementById('btn-login').classList.add('active');
 }
 
-// Cambia entre paneles de roles internos
+// Cambiar "ventanas" del cliente (tabs)
+function showClientTab(tabId) {
+  const tabs = document.querySelectorAll('#tabs-cliente .tab-btn');
+  const sections = document.querySelectorAll('.subsection-cliente');
+
+  tabs.forEach(t => t.classList.remove('active'));
+  sections.forEach(s => s.classList.remove('active'));
+
+  // Activar la tab clickeada
+  const clickedButton = Array.from(tabs)
+    .find(btn => btn.getAttribute('onclick').includes(tabId));
+  if (clickedButton) clickedButton.classList.add('active');
+
+  // Mostrar la sección correspondiente
+  const activeSection = document.getElementById(tabId);
+  if (activeSection) activeSection.classList.add('active');
+}
+
+// Cambiar panel de roles internos
 function showRole(rol) {
   const roles = ['almacen', 'caja', 'chofer', 'supervisor', 'soporte', 'reportes'];
 
