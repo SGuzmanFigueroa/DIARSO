@@ -8,498 +8,117 @@
 
 </head>
 <body>
-    <header>
-  <div class="header-left">
-    <div class="logo-circle">PV</div>
-    <div>
-      <h1>Plaza Vea – Gestión de Pedidos</h1>
-      <small>Canal Online (Cliente) &amp; Procesos Internos</small>
-    </div>
-  </div>
-  <div class="header-right">
-    <small>Proyecto académico • RUP / UML</small>
-  </div>
+   <header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Canal Online (Cliente) y Panel de Almacén</small>
 </header>
 
 <main>
-  <!-- MENÚ LATERAL -->
+  <!-- MENÚ SIMPLE -->
   <nav>
-    <h2>Panel principal</h2>
-
-    <button id="btn-cliente" class="active"
-            onclick="showSection('cliente')">
-      🛒 Canal Online – Cliente
-    </button>
-
-    <button id="btn-interno"
-            onclick="showSection('interno')">
-      🏭 Procesos Internos
-    </button>
-
-    <button id="btn-login"
-            onclick="showSection('login')">
-      🔐 Ingreso al Sistema
-    </button>
-
-    <div class="info">
-      <b>Nota:</b>  
-      <span class="tag tag-small">Cliente</span>  
-      Interfaz externa (e-commerce).  
-      <br><br>
-      <span class="tag tag-small tag-interno">Interno</span>  
-      Paneles para almacén, caja, chofer, supervisor y soporte
-      (opera canal online y presencial).
-    </div>
+    <button id="btn-cliente" class="active">🛒 Registrar Pedido Online</button>
+    <button id="btn-almacen">🏭 Panel de Almacén</button>
   </nav>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <div id="content">
+  <!-- CONTENIDO -->
+  <section id="section-cliente" class="section active">
+    <h2>Registrar Pedido Online (Cliente)</h2>
+    <p class="descripcion">
+      El cliente registra su pedido en el canal online. La información se
+      guarda en el sistema para que luego el área de almacén lo pueda preparar.
+    </p>
 
-    <!-- SECCIÓN CLIENTE -->
-    <section id="section-cliente" class="section active">
-      <h3>Canal Online – Interfaz del Cliente</h3>
-      <p class="descripcion">
-        Aquí el <b>Cliente</b> interactúa directamente con el sistema:
-        registra pedidos online, consulta su historial y registra reclamos.
-        Esta vista representa el <b>canal online</b>.
+    <div class="card">
+      <form id="form-pedido">
+        <div class="grid-2">
+          <div>
+            <label>Nombre del cliente</label>
+            <input type="text" id="cliente-nombre" required placeholder="Ej: Juan Pérez">
+          </div>
+          <div>
+            <label>Correo</label>
+            <input type="email" id="cliente-correo" required placeholder="ejemplo@correo.com">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Producto</label>
+            <input type="text" id="producto" required placeholder="Ej: Leche Gloria 1L">
+          </div>
+          <div>
+            <label>Cantidad</label>
+            <input type="number" id="cantidad" required min="1" value="1">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Modalidad de entrega</label>
+            <select id="modalidad" required>
+              <option value="Recojo en tienda">Recojo en tienda</option>
+              <option value="Entrega a domicilio">Entrega a domicilio</option>
+            </select>
+          </div>
+          <div>
+            <label>Método de pago</label>
+            <select id="metodo-pago" required>
+              <option value="Tarjeta (online)">Tarjeta (online)</option>
+              <option value="Pago contra entrega">Pago contra entrega</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Dirección de entrega (si aplica)</label>
+        <textarea id="direccion" rows="2"
+                  placeholder="Solo si es entrega a domicilio"></textarea>
+
+        <button type="submit" class="btn">Confirmar pedido</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="section-almacen" class="section">
+    <h2>Panel de Almacén (Procesos Internos)</h2>
+    <p class="descripcion">
+      Aquí el almacenero ve los pedidos registrados y puede marcarlos como
+      <b>preparados</b>. Esta vista representa los procesos internos del sistema.
+    </p>
+
+    <div class="card">
+      <h3>Pedidos pendientes</h3>
+      <table id="tabla-pedidos">
+        <thead>
+        <tr>
+          <th>Código</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Modalidad</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Aquí JS irá agregando los pedidos -->
+        </tbody>
+      </table>
+      <p class="nota">
+        * Los pedidos que registra el cliente aparecen automáticamente en esta tabla.
       </p>
-
-      <!-- TABS CLIENTE (ventanas) -->
-      <div class="tabs" id="tabs-cliente">
-        <button class="tab-btn active"
-                onclick="showClientTab('cliente-nuevo')">
-          Nuevo pedido
-        </button>
-        <button class="tab-btn"
-                onclick="showClientTab('cliente-mispedidos')">
-          Mis pedidos
-        </button>
-        <button class="tab-btn"
-                onclick="showClientTab('cliente-reclamos')">
-          Reclamos
-        </button>
-      </div>
-
-      <!-- VENTANA: NUEVO PEDIDO -->
-      <div id="cliente-nuevo"
-           class="subsection-cliente active">
-        <div class="card">
-          <h4>Registrar pedido online</h4>
-          <form>
-            <div class="grid-2">
-              <div>
-                <label>Producto</label>
-                <input type="text" placeholder="Ej: Leche Gloria 1L">
-              </div>
-              <div>
-                <label>Cantidad</label>
-                <input type="number" min="1" value="1">
-              </div>
-            </div>
-
-            <div class="grid-2">
-              <div>
-                <label>Modalidad de entrega</label>
-                <select>
-                  <option>Recojo en tienda</option>
-                  <option>Entrega a domicilio</option>
-                </select>
-              </div>
-              <div>
-                <label>Método de pago</label>
-                <select>
-                  <option>Tarjeta (online)</option>
-                  <option>Pago contra entrega</option>
-                </select>
-              </div>
-            </div>
-
-            <label>Dirección de entrega (si aplica)</label>
-            <textarea rows="2"
-                      placeholder="Calle, número, referencia"></textarea>
-
-            <button type="button" class="btn">
-              Confirmar pedido
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!-- VENTANA: MIS PEDIDOS -->
-      <div id="cliente-mispedidos"
-           class="subsection-cliente">
-        <div class="card">
-          <h4>Mis pedidos online</h4>
-          <p class="descripcion">
-            El cliente puede buscar y revisar el estado de sus pedidos
-            registrados en el canal online.
-          </p>
-
-          <div class="grid-2">
-            <div>
-              <label>Buscar por código</label>
-              <input type="text" placeholder="Ej: PV-2025-000123">
-            </div>
-            <div>
-              <label>Filtrar por estado</label>
-              <select>
-                <option>Todos</option>
-                <option>En preparación</option>
-                <option>En ruta</option>
-                <option>Entregado</option>
-              </select>
-            </div>
-          </div>
-
-          <button type="button" class="btn btn-secondary">
-            Buscar
-          </button>
-
-          <table>
-            <thead>
-            <tr>
-              <th>Código</th>
-              <th>Fecha</th>
-              <th>Estado</th>
-              <th>Modalidad</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>PV-2025-000123</td>
-              <td>28/11/2025</td>
-              <td><span class="estado estado-prep">En preparación</span></td>
-              <td>Domicilio</td>
-            </tr>
-            <tr>
-              <td>PV-2025-000098</td>
-              <td>20/11/2025</td>
-              <td><span class="estado estado-ok">Entregado</span></td>
-              <td>Recojo en tienda</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- VENTANA: RECLAMOS -->
-      <div id="cliente-reclamos"
-           class="subsection-cliente">
-        <div class="card">
-          <h4>Registrar reclamo</h4>
-          <p class="descripcion">
-            El reclamo se registra en el sistema y será atendido
-            por el rol de <b>Soporte</b> en los procesos internos.
-          </p>
-          <form>
-            <div class="grid-2">
-              <div>
-                <label>Código de pedido</label>
-                <input type="text" placeholder="PV-2025-000123">
-              </div>
-              <div>
-                <label>Tipo de reclamo</label>
-                <select>
-                  <option>Producto incompleto</option>
-                  <option>Producto dañado</option>
-                  <option>Retraso en la entrega</option>
-                  <option>Otro</option>
-                </select>
-              </div>
-            </div>
-
-            <label>Descripción</label>
-            <textarea rows="3"
-                      placeholder="Explique el problema con su pedido"></textarea>
-
-            <button type="button" class="btn">
-              Enviar reclamo
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN PROCESOS INTERNOS -->
-    <section id="section-interno" class="section">
-      <h3>Procesos Internos – Canal Online y Presencial</h3>
-      <p class="descripcion">
-        Esta sección muestra las <b>ventanas internas</b> para
-        Almacenero, Caja, Chofer, Supervisor de ventas online,
-        Soporte y Reportes. Aquí se ejecutan los procesos que
-        soportan tanto el canal <b>online</b> como el <b>presencial</b>.
-      </p>
-
-      <div class="card">
-        <div class="roles-internos-header">
-          <label for="rol-select">Rol interno:</label>
-          <select id="rol-select"
-                  onchange="showRole(this.value)">
-            <option value="almacen">Almacenero</option>
-            <option value="caja">Caja</option>
-            <option value="chofer">Chofer</option>
-            <option value="supervisor">Supervisor ventas online</option>
-            <option value="soporte">Soporte / Reclamos</option>
-            <option value="reportes">Panel de reportes</option>
-          </select>
-          <span class="tag tag-interno">Procesos internos</span>
-        </div>
-
-        <!-- PANEL ALMACÉN -->
-        <div id="rol-almacen" class="role-panel active">
-          <h4>Ventana del Almacenero</h4>
-          <p class="descripcion">
-            Gestiona la <b>preparación de pedidos</b> y envía
-            <b>solicitudes de reposición</b> al supervisor.
-          </p>
-
-          <h5>Pedidos pendientes por preparar</h5>
-          <table>
-            <thead>
-            <tr>
-              <th>Código</th>
-              <th>Cliente</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>PV-2025-000123</td>
-              <td>Juan Pérez</td>
-              <td><span class="estado estado-prep">Por preparar</span></td>
-              <td>
-                <button class="btn btn-secondary btn-small">
-                  Marcar preparado
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-
-          <h5 class="mt-15">Solicitud de reposición de stock</h5>
-          <div class="grid-2">
-            <div>
-              <label>Producto</label>
-              <input type="text" placeholder="Arroz Costeño 5kg">
-            </div>
-            <div>
-              <label>Cantidad solicitada</label>
-              <input type="number" min="1" value="10">
-            </div>
-          </div>
-          <button class="btn mt-10">
-            Enviar solicitud al supervisor
-          </button>
-        </div>
-
-        <!-- PANEL CAJA -->
-        <div id="rol-caja" class="role-panel">
-          <h4>Ventana de Caja</h4>
-          <p class="descripcion">
-            Registra los <b>pagos del sistema</b> tanto online
-            como presenciales.
-          </p>
-
-          <div class="grid-2">
-            <div>
-              <label>Código de pedido / ticket</label>
-              <input type="text" placeholder="PV-2025-000123">
-            </div>
-            <div>
-              <label>Monto a cobrar (S/)</label>
-              <input type="number" min="0" step="0.01" value="0.00">
-            </div>
-          </div>
-
-          <label>Método de pago</label>
-          <select>
-            <option>Tarjeta</option>
-            <option>Efectivo</option>
-            <option>Yape / Plin</option>
-          </select>
-
-          <button class="btn mt-10">
-            Registrar pago
-          </button>
-        </div>
-
-        <!-- PANEL CHOFER -->
-        <div id="rol-chofer" class="role-panel">
-          <h4>Ventana del Chofer / Delivery</h4>
-          <p class="descripcion">
-            Muestra la ruta del día y permite
-            <b>marcar pedidos como entregados</b>.
-          </p>
-
-          <h5>Ruta de hoy</h5>
-          <table>
-            <thead>
-            <tr>
-              <th>Pedido</th>
-              <th>Dirección</th>
-              <th>Estado</th>
-              <th>Acción</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>PV-2025-000123</td>
-              <td>Av. Ejemplo 123 – San Miguel</td>
-              <td><span class="estado estado-ruta">En ruta</span></td>
-              <td>
-                <button class="btn btn-secondary btn-small">
-                  Marcar entregado
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- PANEL SUPERVISOR -->
-        <div id="rol-supervisor" class="role-panel">
-          <h4>Ventana del Supervisor de Ventas Online</h4>
-          <p class="descripcion">
-            <b>Aprueba solicitudes del almacén</b> y supervisa
-            el avance de pedidos online.
-          </p>
-
-          <h5>Solicitudes de reposición</h5>
-          <table>
-            <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>Arroz Costeño 5kg</td>
-              <td>50</td>
-              <td><span class="estado estado-pend">Pendiente</span></td>
-              <td>
-                <button class="btn btn-secondary btn-small">Aprobar</button>
-                <button class="btn btn-secondary btn-small">Rechazar</button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- PANEL SOPORTE -->
-        <div id="rol-soporte" class="role-panel">
-          <h4>Ventana de Soporte / Reclamos</h4>
-          <p class="descripcion">
-            Administra los <b>reclamos registrados por el cliente</b>
-            y envía <b>solicitudes de confirmación</b>.
-          </p>
-
-          <h5>Reclamos recibidos</h5>
-          <table>
-            <thead>
-            <tr>
-              <th>ID</th>
-              <th>Pedido</th>
-              <th>Motivo</th>
-              <th>Estado</th>
-              <th>Acción</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>R-2025-001</td>
-              <td>PV-2025-000123</td>
-              <td>Producto dañado</td>
-              <td><span class="estado estado-pend">Pendiente</span></td>
-              <td>
-                <button class="btn btn-secondary btn-small">
-                  Enviar confirmación
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- PANEL REPORTES -->
-        <div id="rol-reportes" class="role-panel">
-          <h4>Ventana de Reportes</h4>
-          <p class="descripcion">
-            Corresponde a los casos de uso:
-            <b>Generar reportes</b>,
-            <b>Generar reportes de stock</b> y
-            <b>Generar reportes de ventas online</b>.
-          </p>
-
-          <label>Tipo de reporte</label>
-          <select>
-            <option>Reporte de stock</option>
-            <option>Reporte de ventas online</option>
-            <option>Pedidos entregados por fecha</option>
-          </select>
-
-          <label>Rango de fechas</label>
-          <div class="fechas">
-            <input type="date">
-            <input type="date">
-          </div>
-
-          <button class="btn mt-10">
-            Generar reporte
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN LOGIN -->
-    <section id="section-login" class="section">
-      <h3>Ingreso al Sistema (Usuario)</h3>
-      <p class="descripcion">
-        Pantalla genérica para el caso de uso
-        <b>Ingresar sistema</b> y
-        <b>Cambiar contraseña</b>.
-      </p>
-
-      <div class="grid-2">
-        <div class="card">
-          <h4>Iniciar sesión</h4>
-          <label>Usuario</label>
-          <input type="text" placeholder="DNI o correo">
-
-          <label>Contraseña</label>
-          <input type="password" placeholder="********">
-
-          <button class="btn mt-10">Ingresar</button>
-        </div>
-
-        <div class="card">
-          <h4>Cambiar contraseña</h4>
-          <label>Contraseña actual</label>
-          <input type="password">
-
-          <label>Nueva contraseña</label>
-          <input type="password">
-
-          <label>Confirmar nueva contraseña</label>
-          <input type="password">
-
-          <button class="btn btn-secondary mt-10">
-            Guardar cambios
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      Prototipo GUI – Proyecto Plaza Vea (Gestión de stock y pedidos)
-    </footer>
-  </div>
+    </div>
+  </section>
 </main>
 
-<!-- Conectar JS externo -->
+<!-- MODAL DE MENSAJES -->
+<div id="modal-overlay" class="hidden">
+  <div id="modal">
+    <h3 id="modal-titulo">Proceso exitoso</h3>
+    <p id="modal-mensaje"></p>
+    <button id="modal-cerrar" class="btn">Aceptar</button>
+  </div>
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>
