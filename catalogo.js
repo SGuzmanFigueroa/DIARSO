@@ -68,6 +68,8 @@ const productos = [
   }
 ];
 
+const STORAGE_KEY = "carrito_plazavea";
+
 let carrito = []; // {id, nombre, precio, cantidad}
 let categoriaActual = "Todos";
 let textoBusqueda = "";
@@ -77,6 +79,16 @@ const burbujaCarrito = document.getElementById("burbuja-carrito");
 const panelCarrito = document.getElementById("panel-carrito");
 const listaCarrito = document.getElementById("lista-carrito");
 const totalCarritoEl = document.getElementById("total-carrito");
+
+// ===================== HELPERS STORAGE =====================
+function cargarCarritoDesdeStorage() {
+  const data = localStorage.getItem(STORAGE_KEY);
+  carrito = data ? JSON.parse(data) : [];
+}
+
+function guardarCarritoEnStorage() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(carrito));
+}
 
 // ===================== RENDER DEL CATÁLOGO =====================
 function renderProductos() {
@@ -176,6 +188,9 @@ function actualizarCarrito() {
   });
 
   totalCarritoEl.textContent = `Total: S/ ${total.toFixed(2)}`;
+
+  // 👉 guardar siempre que se actualiza
+  guardarCarritoEnStorage();
 }
 
 function eliminarItem(index) {
@@ -193,7 +208,8 @@ function irAPagar() {
     alert("Tu carrito está vacío.");
     return;
   }
-  localStorage.setItem("carrito_plazavea", JSON.stringify(carrito));
+  // ya se guarda en actualizarCarrito, pero por si acaso:
+  guardarCarritoEnStorage();
   window.location.href = "registrar_pedido_online.html";
 }
 
@@ -218,7 +234,7 @@ const usuariosInternos = [
     user: "supervisor@plazavea.com",
     pass: "1234",
     rol: "supervisor",
-    destino: "reportes.html" // cámbialo por la interfaz que quieras
+    destino: "reportes.html"
   }
 ];
 
@@ -267,4 +283,6 @@ window.abrirLogin = abrirLogin;
 window.cerrarLogin = cerrarLogin;
 
 // ===================== INICIALIZACIÓN =====================
-renderProductos();
+cargarCarritoDesdeStorage();   // 👈 cargar si ya había algo
+actualizarCarrito();           // para que se vea en el panel y burbuja
+renderProductos();             // para dibujar el catálogo
