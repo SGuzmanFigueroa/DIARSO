@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Usuario del sistema</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Panel de Usuario del sistema</small>
+</header>
+
+<main>
+  <section class="section active">
+    <button class="btn-volver-actores" onclick="location.href='index.html'">
+      ← Volver a actores
+    </button>
+
+    <h2>Actor: Usuario del sistema</h2>
+    <p class="descripcion">
+      Cualquier usuario autenticado del sistema puede ingresar y administrar su contraseña.
+    </p>
+
+    <div class="grid-casos">
+      <div class="card card-click" onclick="location.href='cu_ingresar_sistema.html'">
+        <h3>🔑 Ingresar sistema</h3>
+        <p>Inicia sesión en el sistema de gestión de pedidos.</p>
+      </div>
+
+      <div class="card card-click" onclick="location.href='cu_cambiar_contrasena.html'">
+        <h3>🔐 Cambiar contraseña</h3>
+        <p>Permite al usuario cambiar su contraseña. Extiende el caso "Ingresar sistema".</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

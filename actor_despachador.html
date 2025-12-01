@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Despachador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Panel de Despachador</small>
+</header>
+
+<main>
+  <section class="section active">
+    <button class="btn-volver-actores" onclick="location.href='index.html'">
+      ← Volver a actores
+    </button>
+
+    <h2>Actor: Despachador</h2>
+    <p class="descripcion">
+      El despachador verifica la mercadería preparada y registra la conformidad antes de la entrega.
+    </p>
+
+    <div class="grid-casos">
+      <div class="card card-click" onclick="location.href='cu_conformidad_pedidos.html'">
+        <h3>📝 Registrar conformidad de pedidos</h3>
+        <p>Verifica el pedido preparado y registra si está conforme o no conforme.</p>
+      </div>
+
+      <div class="card card-click" onclick="location.href='cu_boleta_recepcion.html'">
+        <h3>🧾 Emitir boletas de recepción</h3>
+        <p>Genera y emite boletas de recepción de pedidos.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

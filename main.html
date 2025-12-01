@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="catalogo.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="logo">plazavea</div>
+
+  <div class="search-box">
+    <input type="text" id="buscador" placeholder="¿Qué estás buscando?">
+  </div>
+
+  <div class="top-actions">
+    <!-- Botón opcional, puedes borrarlo si quieres que SOLO sea con Ctrl+B -->
+    <button class="btn-internos" onclick="abrirLogin()">🔐 Procesos internos</button>
+    <span class="top-text">Mi cuenta</span>
+    <div class="icon-carrito" onclick="toggleCarrito()">
+      🛒 <span id="burbuja-carrito">0</span>
+    </div>
+  </div>
+</header>
+
+<nav class="categorias">
+  <button class="cat-btn active" data-cat="Todos">Todos</button>
+  <button class="cat-btn" data-cat="Frutas y Verduras">🥕 Frutas y Verduras</button>
+  <button class="cat-btn" data-cat="Abarrotes">🥫 Abarrotes</button>
+  <button class="cat-btn" data-cat="Lácteos">🧀 Lácteos</button>
+  <button class="cat-btn" data-cat="Bebidas">🥤 Bebidas</button>
+</nav>
+
+<main>
+  <h2 class="titulo-seccion">Productos</h2>
+
+  <section id="grid-productos" class="grid-productos">
+    <!-- JS dibuja las tarjetas -->
+  </section>
+</main>
+
+<!-- PANEL DE CARRITO -->
+<div id="panel-carrito" class="panel-carrito">
+  <h3>🛍 Mi carrito</h3>
+  <div id="lista-carrito"></div>
+  <p id="total-carrito" class="total-carrito">Total: S/ 0.00</p>
+  <button class="btn-pagar" onclick="irAPagar()">Ir a pagar</button>
+</div>
+
+<!-- MODAL LOGIN PROCESOS INTERNOS -->
+<div id="login-overlay" class="overlay hidden">
+  <div class="login-modal">
+    <h3>Acceso a procesos internos</h3>
+    <form id="form-login-internos">
+      <label>Usuario / correo</label>
+      <input type="text" id="login-user" required placeholder="almacen@plazavea.com">
+
+      <label>Contraseña</label>
+      <input type="password" id="login-pass" required placeholder="••••">
+
+      <label>Rol</label>
+      <select id="login-rol">
+        <option value="almacen">Almacenero</option>
+        <option value="vendedor">Vendedor</option>
+        <option value="supervisor">Supervisor</option>
+      </select>
+
+      <div class="login-actions">
+        <button type="submit" class="btn-login">Ingresar</button>
+        <button type="button" class="btn-login-sec" onclick="cerrarLogin()">Cancelar</button>
+      </div>
+    </form>
+
+    <p class="nota-login">
+      Demo:<br>
+      Usuario: <b>almacen@plazavea.com</b><br>
+      Clave: <b>1234</b> (para cualquier rol configurado en JS)
+    </p>
+  </div>
+</div>
+
+<script src="catalogo.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Cliente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Panel de Cliente</small>
+</header>
+
+<main>
+  <section class="section active">
+    <button class="btn-volver-actores" onclick="location.href='index.html'">
+      ← Volver a actores
+    </button>
+
+    <h2>Actor: Cliente</h2>
+    <p class="descripcion">
+      El cliente realiza pedidos por el canal online y puede consultar el estado de sus compras.
+    </p>
+
+    <div class="grid-casos">
+      <div class="card card-click" onclick="location.href='main.html'">
+        <h3>🛒 Registrar pedido online</h3>
+        <p>Acceso al catálogo del cliente para registrar pedidos por canal online.</p>
+      </div>
+
+      <div class="card card-click" onclick="location.href='cu_buscar_pedidos.html'">
+        <h3>🔎 Buscar pedidos</h3>
+        <p>Permite localizar pedidos por código o por nombre del cliente.</p>
+      </div>
+
+      <div class="card card-click" onclick="location.href='cu_lista_ventas.html'">
+        <h3>📄 Visualizar lista de ventas online</h3>
+        <p>Lista consolidada de pedidos realizados por canal online.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

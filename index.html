@@ -7,118 +7,84 @@
     <link rel="stylesheet" href="styles.css">
 
 </head>
+
 <body>
-   <header>
+<header>
   <h1>Plaza Vea – Gestión de Pedidos</h1>
-  <small>Canal Online (Cliente) y Panel de Almacén</small>
+  <small>Casos de Uso del Sistema agrupados por Actor (UML)</small>
 </header>
 
 <main>
-  <!-- MENÚ SIMPLE -->
-  <nav>
-    <button id="btn-cliente" class="active">🛒 Registrar Pedido Online</button>
-    <button id="btn-almacen">🏭 Panel de Almacén</button>
-  </nav>
+  <section class="section active">
+    <h2>Actores del sistema</h2>
+    <p class="descripcion">Selecciona un actor para iniciar sesión.</p>
 
-  <!-- CONTENIDO -->
-  <section id="section-cliente" class="section active">
-    <h2>Registrar Pedido Online (Cliente)</h2>
-    <p class="descripcion">
-      El cliente registra su pedido en el canal online. La información se
-      guarda en el sistema para que luego el área de almacén lo pueda preparar.
-    </p>
+    <div class="grid-casos">
 
-    <div class="card">
-      <form id="form-pedido">
-        <div class="grid-2">
-          <div>
-            <label>Nombre del cliente</label>
-            <input type="text" id="cliente-nombre" required placeholder="Ej: Juan Pérez">
-          </div>
-          <div>
-            <label>Correo</label>
-            <input type="email" id="cliente-correo" required placeholder="ejemplo@correo.com">
-          </div>
-        </div>
+      <div class="card card-click" onclick="openLogin('cliente')">
+        <h3>🧑‍💻 Cliente</h3>
+        <p>Realiza pedidos online y consulta sus compras.</p>
+      </div>
 
-        <div class="grid-2">
-          <div>
-            <label>Producto</label>
-            <input type="text" id="producto" required placeholder="Ej: Leche Gloria 1L">
-          </div>
-          <div>
-            <label>Cantidad</label>
-            <input type="number" id="cantidad" required min="1" value="1">
-          </div>
-        </div>
+      <div class="card card-click" onclick="openLogin('despachador')">
+        <h3>📦 Despachador</h3>
+        <p>Registra la conformidad de pedidos.</p>
+      </div>
 
-        <div class="grid-2">
-          <div>
-            <label>Modalidad de entrega</label>
-            <select id="modalidad" required>
-              <option value="Recojo en tienda">Recojo en tienda</option>
-              <option value="Entrega a domicilio">Entrega a domicilio</option>
-            </select>
-          </div>
-          <div>
-            <label>Método de pago</label>
-            <select id="metodo-pago" required>
-              <option value="Tarjeta (online)">Tarjeta (online)</option>
-              <option value="Pago contra entrega">Pago contra entrega</option>
-            </select>
-          </div>
-        </div>
+      <div class="card card-click" onclick="openLogin('soporte')">
+        <h3>🛟 Soporte</h3>
+        <p>Gestiona reclamos y confirmaciones.</p>
+      </div>
 
-        <label>Dirección de entrega (si aplica)</label>
-        <textarea id="direccion" rows="2"
-                  placeholder="Solo si es entrega a domicilio"></textarea>
+      <div class="card card-click" onclick="openLogin('vendedor')">
+        <h3>🧾 Vendedor</h3>
+        <p>Consulta el stock de productos.</p>
+      </div>
 
-        <button type="submit" class="btn">Confirmar pedido</button>
-      </form>
-    </div>
-  </section>
+      <div class="card card-click" onclick="openLogin('caja')">
+        <h3>💰 Caja</h3>
+        <p>Registra pagos.</p>
+      </div>
 
-  <section id="section-almacen" class="section">
-    <h2>Panel de Almacén (Procesos Internos)</h2>
-    <p class="descripcion">
-      Aquí el almacenero ve los pedidos registrados y puede marcarlos como
-      <b>preparados</b>. Esta vista representa los procesos internos del sistema.
-    </p>
+      <div class="card card-click" onclick="openLogin('chofer')">
+        <h3>🚚 Chofer</h3>
+        <p>Actualiza entregas.</p>
+      </div>
 
-    <div class="card">
-      <h3>Pedidos pendientes</h3>
-      <table id="tabla-pedidos">
-        <thead>
-        <tr>
-          <th>Código</th>
-          <th>Cliente</th>
-          <th>Producto</th>
-          <th>Cantidad</th>
-          <th>Modalidad</th>
-          <th>Estado</th>
-          <th>Acción</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Aquí JS irá agregando los pedidos -->
-        </tbody>
-      </table>
-      <p class="nota">
-        * Los pedidos que registra el cliente aparecen automáticamente en esta tabla.
-      </p>
+      <div class="card card-click" onclick="openLogin('almacenero')">
+        <h3>🏭 Almacenero</h3>
+        <p>Prepara pedidos y genera reportes.</p>
+      </div>
+
+      <div class="card card-click" onclick="openLogin('supervisor')">
+        <h3>🧑‍💼 Supervisor</h3>
+        <p>Aprueba solicitudes del almacén.</p>
+      </div>
+
+      <div class="card card-click" onclick="openLogin('usuario')">
+        <h3>🔐 Usuario del sistema</h3>
+        <p>Administra su clave y acceso.</p>
+      </div>
+
     </div>
   </section>
 </main>
 
-<!-- MODAL DE MENSAJES -->
-<div id="modal-overlay" class="hidden">
-  <div id="modal">
-    <h3 id="modal-titulo">Proceso exitoso</h3>
-    <p id="modal-mensaje"></p>
-    <button id="modal-cerrar" class="btn">Aceptar</button>
+<!-- MODAL LOGIN -->
+<div id="modal-login" class="hidden modal-bg">
+  <div class="modal-box">
+    <h3 id="login-title">Iniciar sesión</h3>
+
+    <label>Contraseña</label>
+    <input type="password" id="actor-pass" placeholder="Ingrese contraseña">
+
+    <p id="login-error" style="color:red;display:none;font-size:12px;">Contraseña incorrecta</p>
+
+    <button class="btn" onclick="doLogin()">Ingresar</button>
+    <button class="btn-volver-actores" onclick="closeLogin()">Cancelar</button>
   </div>
 </div>
 
-<script src="app.js"></script>
+<script src="app_login.js"></script>
 </body>
 </html>

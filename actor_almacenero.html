@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Almacenero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Panel de Almacenero</small>
+</header>
+
+<main>
+  <section class="section active">
+    <button class="btn-volver-actores" onclick="location.href='index.html'">
+      ← Volver a actores
+    </button>
+
+    <h2>Actor: Almacenero</h2>
+    <p class="descripcion">
+      El almacenero prepara pedidos, verifica stock y genera reportes para el supervisor.
+    </p>
+
+    <div class="grid-casos">
+      <div class="card card-click" onclick="location.href='cu_solicitud_supervisor.html'">
+        <h3>📨 Enviar solicitud de pedidos al supervisor</h3>
+        <p>Envía al supervisor la solicitud de reposición de stock o pedidos especiales.</p>
+      </div>
+
+      <div class="card card-click" onclick="location.href='cu_generar_reportes.html'">
+        <h3>📑 Generar reportes</h3>
+        <p>Genera reportes globales de pedidos y ventas.</p>
+      </div>
+
+      <div class="card card-click" onclick="location.href='cu_reportes_stock.html'">
+        <h3>📊 Generar reportes de stock</h3>
+        <p>Reportes de existencias, quiebres y productos más vendidos.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

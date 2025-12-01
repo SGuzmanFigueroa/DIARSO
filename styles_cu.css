@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f3f4f7;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(90deg, #b71c1c, #d50000);
+  color: #fff;
+  padding: 12px 18px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+header small {
+  font-size: 12px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 15px 30px;
+}
+
+h2 {
+  margin-top: 0;
+  color: #b71c1c;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin: 6px 0 2px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #d50000;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.btn:hover {
+  background: #b71c1c;
+  transform: translateY(-1px);
+}
+
+.btn-sec {
+  background: #eee;
+  color: #333;
+  margin-left: 6px;
+}
+
+.btn-sec:hover {
+  background: #ddd;
+}
+
+.hidden {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+th, td {
+  border: 1px solid #e0e0e0;
+  padding: 6px;
+  text-align: left;
+}
+
+th {
+  background: #fafafa;
+}
+
+.total {
+  font-weight: bold;
+  text-align: right;
+  margin-top: 8px;
+}
+
+.resumen {
+  background: #fff3e0;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* BOTÓN VOLVER AL SISTEMA */
+.volver-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 10px auto 0;
+  padding: 0 15px;
+}
+
+.btn-volver-sistema {
+  background: #ffffff;
+  color: #b71c1c;
+  border: 2px solid #b71c1c;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn-volver-sistema:hover {
+  background: #b71c1c;
+  color: #fff;
+}

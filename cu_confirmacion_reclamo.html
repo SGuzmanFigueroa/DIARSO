@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="confirmacion.css">
+</head>
+<body>
+    <header class="topbar">
+  <h1>📨 Enviar solicitud de confirmación del reclamo</h1>
+  <button class="btn-volver" onclick="location.href='index.html'">
+    ← Volver a Casos de Uso
+  </button>
+</header>
+
+<main>
+  <p class="descripcion">
+    En este módulo el área de <b>Soporte</b> envía al cliente la confirmación de
+    la solución de su reclamo. Solo se muestran reclamos que ya están
+    <b>Cerrados</b> y aún no tienen confirmación enviada.
+  </p>
+
+  <!-- RECLAMOS LISTOS PARA CONFIRMAR -->
+  <section class="card">
+    <h2>Reclamos cerrados pendientes de confirmación</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Cliente</th>
+          <th>Canal</th>
+          <th>Tipo</th>
+          <th>Fecha cierre</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-pendientes">
+        <!-- JS inserta filas -->
+      </tbody>
+    </table>
+    <p id="resumen-pendientes" class="resumen"></p>
+  </section>
+
+  <!-- CONFIRMACIONES ENVIADAS -->
+  <section class="card">
+    <h2>Confirmaciones enviadas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Código reclamo</th>
+          <th>Cliente</th>
+          <th>Medio</th>
+          <th>Fecha envío</th>
+          <th>Resumen</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-enviadas">
+        <!-- JS inserta filas -->
+      </tbody>
+    </table>
+    <p id="resumen-enviadas" class="resumen"></p>
+  </section>
+</main>
+
+<!-- MODAL MENSAJE DE CONFIRMACIÓN -->
+<div id="overlay" class="overlay hidden">
+  <div class="modal">
+    <h3>Preparar mensaje de confirmación</h3>
+
+    <div id="detalle-reclamo" class="detalle">
+      <!-- JS coloca datos del reclamo -->
+    </div>
+
+    <form id="form-confirmacion">
+      <div class="grid-2">
+        <div>
+          <label>Medio de envío</label>
+          <select id="medio" required>
+            <option value="Correo electrónico">Correo electrónico</option>
+            <option value="Llamada telefónica">Llamada telefónica</option>
+            <option value="Atención presencial">Atención presencial</option>
+          </select>
+        </div>
+        <div>
+          <label>Asunto</label>
+          <input type="text" id="asunto" required>
+        </div>
+      </div>
+
+      <label>Mensaje al cliente</label>
+      <textarea id="mensaje" rows="6" required></textarea>
+
+      <div class="acciones-modal">
+        <button type="submit" class="btn-primario">Marcar como enviado</button>
+        <button type="button" class="btn-secundario" onclick="cerrarModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="confirmacion.js"></script>
+</body>
+</html>

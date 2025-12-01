@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="boleta.css">
+</head>
+<body>
+    <header class="topbar">
+  <h1>🧾 Emitir boletas de recepción</h1>
+  <button class="btn-volver" onclick="location.href='index.html'">← Volver a Casos de Uso</button>
+</header>
+
+<main>
+  <p class="descripcion">
+    En esta interfaz el <b>despachador</b> emite una boleta de recepción interna para
+    cada pedido que ya fue preparado y está <b>conforme</b>. La boleta sirve como
+    evidencia de que el pedido fue revisado antes de su entrega al chofer o al cliente.
+  </p>
+
+  <!-- SECCIÓN PENDIENTES -->
+  <section class="card">
+    <h2>Pedidos conformes sin boleta</h2>
+    <p class="descripcion">
+      Solo se muestran los pedidos que tienen conformidad <b>Conforme</b> y aún no
+      tienen boleta de recepción emitida.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Cant.</th>
+          <th>Modalidad</th>
+          <th>Conformidad</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-pendientes">
+        <!-- JS inserta filas -->
+      </tbody>
+    </table>
+
+    <p id="resumen-pendientes" class="resumen"></p>
+  </section>
+
+  <!-- SECCIÓN BOLETAS EMITIDAS -->
+  <section class="card">
+    <h2>Boletas de recepción emitidas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nº Boleta</th>
+          <th>Pedido</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Modalidad</th>
+          <th>Despachador</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-boletas">
+        <!-- JS inserta filas -->
+      </tbody>
+    </table>
+
+    <p id="resumen-boletas" class="resumen"></p>
+  </section>
+</main>
+
+<!-- MODAL EMITIR BOLETA -->
+<div id="overlay" class="overlay hidden">
+  <div class="modal">
+    <h3>Emitir boleta de recepción</h3>
+
+    <div id="detalle-pedido" class="detalle">
+      <!-- JS coloca detalle del pedido -->
+    </div>
+
+    <form id="form-boleta">
+      <div class="grid-2">
+        <div>
+          <label>Nº de boleta (autogenerado)</label>
+          <input type="text" id="boleta-numero" readonly>
+        </div>
+        <div>
+          <label>Fecha y hora</label>
+          <input type="text" id="boleta-fecha" readonly>
+        </div>
+      </div>
+
+      <label>Nombre del despachador</label>
+      <input type="text" id="boleta-despachador" required placeholder="Ej: Luis Ayala">
+
+      <label>Observaciones</label>
+      <textarea id="boleta-observaciones" rows="3"
+        placeholder="Ej: Pedido completo, sin incidencias."></textarea>
+
+      <div class="acciones-modal">
+        <button type="submit" class="btn-primario">Emitir boleta</button>
+        <button type="button" class="btn-secundario" onclick="cerrarModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="boleta.js"></script>
+</body>
+</html>

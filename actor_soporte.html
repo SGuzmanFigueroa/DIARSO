@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Soporte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Panel de Soporte</small>
+</header>
+
+<main>
+  <section class="section active">
+    <button class="btn-volver-actores" onclick="location.href='index.html'">
+      ← Volver a actores
+    </button>
+
+    <h2>Actor: Soporte</h2>
+    <p class="descripcion">
+      Soporte gestiona los reclamos generados por el cliente y sus confirmaciones.
+    </p>
+
+    <div class="grid-casos">
+      <div class="card card-click" onclick="location.href='cu_registrar_reclamos.html'">
+        <h3>📢 Registrar reclamos</h3>
+        <p>Registra y da seguimiento a reclamos del cliente.</p>
+      </div>
+
+      <div class="card card-click" onclick="location.href='cu_confirmacion_reclamo.html'">
+        <h3>📨 Enviar solicitud de confirmación del reclamo</h3>
+        <p>Envía la confirmación del reclamo al cliente.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

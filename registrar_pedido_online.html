@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles_cu.css">
+</head>
+<body>
+<header>
+  <h1>Plaza Vea – Registrar Pedido Online</h1>
+  <small>Demo funcional de registro de pedido con métodos de pago</small>
+</header>
+
+<div class="volver-container">
+  <button class="btn-volver-sistema" onclick="location.href='index.html'">← Volver al sistema</button>
+</div>
+
+
+<main>
+
+  <!-- ================= DATOS DEL CLIENTE ================= -->
+  <section class="card">
+    <h2>1. Datos del cliente</h2>
+    <div class="grid-2">
+      <div>
+        <label>Nombre completo</label>
+        <input type="text" id="cli-nombre" placeholder="Ej: Juan Pérez">
+      </div>
+      <div>
+        <label>Correo electrónico</label>
+        <input type="email" id="cli-correo" placeholder="ejemplo@correo.com">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <label>Teléfono</label>
+        <input type="tel" id="cli-telefono" placeholder="Ej: 987654321">
+      </div>
+      <div>
+        <label>DNI (opcional)</label>
+        <input type="text" id="cli-dni" placeholder="Ej: 12345678">
+      </div>
+    </div>
+    <p class="nota">Estos datos se usarán para la boleta y para contactarte ante cualquier incidencia con tu pedido.</p>
+  </section>
+
+  <!-- ================= CARRITO / PRODUCTOS ================= -->
+  <section class="card">
+    <h2>2. Selección de productos</h2>
+
+    <div class="grid-2">
+      <div>
+        <label>Producto</label>
+        <select id="prod-select"></select>
+      </div>
+      <div>
+        <label>Cantidad</label>
+        <input type="number" id="prod-cantidad" min="1" value="1">
+      </div>
+    </div>
+
+    <button class="btn" id="btn-agregar">Agregar al carrito</button>
+    <span class="nota">El stock se valida automáticamente (simulación).</span>
+
+    <table id="tabla-carrito">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cant.</th>
+          <th>P. Unit.</th>
+          <th>Subtotal</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+      <!-- filas dinámicas -->
+      </tbody>
+    </table>
+
+    <p id="total-carrito" class="total">Total: S/ 0.00</p>
+  </section>
+
+  <!-- ================= ENTREGA ================= -->
+  <section class="card">
+    <h2>3. Modalidad de entrega</h2>
+    <div class="grid-2">
+      <div>
+        <label>Modalidad</label>
+        <select id="ent-modalidad">
+          <option value="Recojo en tienda">Recojo en tienda</option>
+          <option value="Entrega a domicilio">Entrega a domicilio</option>
+        </select>
+      </div>
+      <div>
+        <label>Distrito / Ciudad</label>
+        <input type="text" id="ent-ciudad" placeholder="Ej: Los Olivos">
+      </div>
+    </div>
+
+    <label>Dirección (si es a domicilio)</label>
+    <textarea id="ent-direccion" rows="2" placeholder="Calle, número, referencia"></textarea>
+  </section>
+
+  <!-- ================= MÉTODO DE PAGO ================= -->
+  <section class="card">
+    <h2>4. Método de pago</h2>
+
+    <label>Método de pago</label>
+    <select id="pago-metodo">
+      <option value="">Seleccione...</option>
+      <option value="tarjeta">Tarjeta de crédito / débito</option>
+      <option value="yape">Yape / Plin</option>
+      <option value="contra-entrega">Pago contra entrega</option>
+    </select>
+
+    <!-- TARJETA -->
+    <div id="pago-tarjeta" class="hidden">
+      <div class="grid-2">
+        <div>
+          <label>Número de tarjeta</label>
+          <input type="text" id="tarjeta-numero" placeholder="XXXX-XXXX-XXXX-XXXX">
+        </div>
+        <div>
+          <label>Nombre en la tarjeta</label>
+          <input type="text" id="tarjeta-nombre" placeholder="Como figura en la tarjeta">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <label>Fecha de vencimiento</label>
+          <input type="text" id="tarjeta-fecha" placeholder="MM/AA">
+        </div>
+        <div>
+          <label>CVV</label>
+          <input type="password" id="tarjeta-cvv" placeholder="3 dígitos">
+        </div>
+      </div>
+    </div>
+
+    <!-- YAPE/PLIN -->
+    <div id="pago-yape" class="hidden">
+      <label>Celular asociado a Yape/Plin</label>
+      <input type="tel" id="yape-celular" placeholder="Ej: 987654321">
+      <p class="nota">En un sistema real se mostraría un QR para escanear el pago.</p>
+    </div>
+
+    <!-- CONTRA ENTREGA -->
+    <div id="pago-contra" class="hidden">
+      <p class="nota">
+        El pago se realizará en efectivo o POS al momento de recibir el pedido.
+        Asegúrate de tener el monto aproximado disponible.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= RESUMEN + CONFIRMACIÓN ================= -->
+  <section class="card">
+    <h2>5. Confirmación del pedido</h2>
+
+    <div class="resumen" id="resumen-pedido">
+      Completa los pasos anteriores y aquí verás un resumen de tu pedido.
+    </div>
+
+    <button class="btn" id="btn-confirmar">Confirmar pedido y pagar</button>
+    <button class="btn btn-sec" id="btn-actualizar-resumen">Actualizar resumen</button>
+  </section>
+
+</main>
+
+<!-- JAVASCRIPT EXTERNO -->
+<script src="pedido.js"></script>
+</body>
+</html>

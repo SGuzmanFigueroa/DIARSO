@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reclamos.css">
+</head>
+<body>
+    <header class="topbar">
+  <h1>📢 Registrar reclamos</h1>
+  <button class="btn-volver" onclick="location.href='index.html'">
+    ← Volver a Casos de Uso
+  </button>
+</header>
+
+<main>
+  <p class="descripcion">
+    En este módulo el área de <b>Soporte</b> registra los reclamos recibidos
+    tanto en el <b>Libro de Reclamaciones presencial</b> como por <b>canal online</b>,
+    y realiza el <b>seguimiento</b> de su atención.
+  </p>
+
+  <!-- FORMULARIO DE REGISTRO -->
+  <section class="card">
+    <h2>Nuevo reclamo</h2>
+
+    <form id="form-reclamo">
+      <div class="grid-3">
+        <div>
+          <label>Canal</label>
+          <select id="canal" required>
+            <option value="Libro de Reclamaciones">Libro de Reclamaciones (presencial)</option>
+            <option value="Canal online">Canal online</option>
+          </select>
+        </div>
+        <div>
+          <label>Tipo</label>
+          <select id="tipo" required>
+            <option value="Reclamo">Reclamo</option>
+            <option value="Queja">Queja</option>
+          </select>
+        </div>
+        <div>
+          <label>Código de pedido (opcional)</label>
+          <input type="text" id="codigo-pedido" placeholder="Ej: PV-0012">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label>Nombre del cliente</label>
+          <input type="text" id="cliente" required placeholder="Ej: Juan Pérez">
+        </div>
+        <div>
+          <label>Documento / DNI</label>
+          <input type="text" id="documento" placeholder="Ej: 12345678">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div>
+          <label>Correo</label>
+          <input type="email" id="correo" placeholder="cliente@correo.com">
+        </div>
+        <div>
+          <label>Teléfono</label>
+          <input type="text" id="telefono" placeholder="Ej: 987654321">
+        </div>
+        <div>
+          <label>Fecha del hecho</label>
+          <input type="date" id="fecha-hecho">
+        </div>
+      </div>
+
+      <label>Detalle del reclamo / queja</label>
+      <textarea id="detalle" rows="3" required
+        placeholder="Describa brevemente lo ocurrido, producto, tienda, monto, etc."></textarea>
+
+      <button type="submit" class="btn-primario">Registrar reclamo</button>
+    </form>
+  </section>
+
+  <!-- LISTA DE RECLAMOS -->
+  <section class="card">
+    <h2>Reclamos registrados</h2>
+
+    <!-- Filtros simples -->
+    <div class="grid-3 filtros">
+      <div>
+        <label>Buscar por código o cliente</label>
+        <input type="text" id="filtro-busqueda" placeholder="Ej: RC-0003, Juan">
+      </div>
+      <div>
+        <label>Estado</label>
+        <select id="filtro-estado">
+          <option value="todos">Todos</option>
+          <option value="Abierto">Abierto</option>
+          <option value="En proceso">En proceso</option>
+          <option value="Cerrado">Cerrado</option>
+        </select>
+      </div>
+      <div>
+        <label>Canal</label>
+        <select id="filtro-canal">
+          <option value="todos">Todos</option>
+          <option value="Libro de Reclamaciones">Libro de Reclamaciones</option>
+          <option value="Canal online">Canal online</option>
+        </select>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Fecha registro</th>
+          <th>Cliente</th>
+          <th>Canal</th>
+          <th>Tipo</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-reclamos">
+        <!-- JS inserta filas -->
+      </tbody>
+    </table>
+
+    <p id="resumen" class="resumen"></p>
+  </section>
+</main>
+
+<!-- MODAL DE SEGUIMIENTO -->
+<div id="overlay" class="overlay hidden">
+  <div class="modal">
+    <h3>Detalle y seguimiento del reclamo</h3>
+
+    <div id="detalle-reclamo" class="detalle">
+      <!-- JS coloca info -->
+    </div>
+
+    <form id="form-seguimiento">
+      <label>Estado del reclamo</label>
+      <select id="seguimiento-estado" required>
+        <option value="Abierto">Abierto</option>
+        <option value="En proceso">En proceso</option>
+        <option value="Cerrado">Cerrado</option>
+      </select>
+
+      <label>Nuevo comentario de seguimiento</label>
+      <textarea id="seguimiento-comentario" rows="3"
+        placeholder="Ej: Se llamó al cliente, se ofreció nota de crédito, se coordina entrega, etc."></textarea>
+
+      <label>Historial de seguimiento</label>
+      <div id="seguimiento-historial" class="historial">
+        <!-- JS mostrará líneas de historial -->
+      </div>
+
+      <div class="acciones-modal">
+        <button type="submit" class="btn-primario">Guardar actualización</button>
+        <button type="button" class="btn-secundario" onclick="cerrarModal()">Cerrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="reclamos.js"></script>
+</body>
+</html>

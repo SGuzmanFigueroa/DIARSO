@@ -29,7 +29,7 @@ main {
   padding: 18px 22px 40px;
 }
 
-/* MENÚ */
+/* MENÚ (por si lo usas en otras pantallas) */
 nav {
   margin-bottom: 16px;
 }
@@ -55,11 +55,23 @@ nav button.active {
   border-color: #d50000;
 }
 
-/* SECCIONES */
+/* SECCIONES (ACTORES) */
 .section {
-  display: none;
+  /* AHORA TODAS LAS SECCIONES SON VISIBLES */
+  display: block;
+  margin-bottom: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
 }
 
+/* La primera sección no lleva línea arriba */
+.section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Si alguna sección tiene .active no cambia nada,
+   lo dejamos por compatibilidad con otras páginas */
 .section.active {
   display: block;
 }
@@ -70,7 +82,7 @@ nav button.active {
   margin-bottom: 10px;
 }
 
-/* TARJETA */
+/* TARJETAS GENÉRICAS */
 .card {
   background: #fff;
   border-radius: 8px;
@@ -78,6 +90,7 @@ nav button.active {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
+/* GRID 2 (formularios en otras pantallas) */
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -124,7 +137,7 @@ textarea {
   transform: translateY(-1px);
 }
 
-/* TABLA */
+/* TABLAS (otras interfaces internas) */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -157,7 +170,7 @@ th {
   color: #666;
 }
 
-/* MODAL */
+/* MODAL GENERAL */
 #modal-overlay {
   position: fixed;
   inset: 0;
@@ -184,6 +197,47 @@ th {
 #modal h3 {
   margin-top: 0;
 }
+
+/* CASOS DE USO (tarjetas dentro de cada actor) */
+.grid-casos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.badge-important {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #ffebee;
+  color: #b71c1c;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.card-click {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-click:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  background: #fff9f9;
+}
+
+.btn-volver-actores {
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #e0e0e0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

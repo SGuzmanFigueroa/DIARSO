@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="conformidad.css">
+</head>
+<body>
+    <header class="topbar">
+  <h1>📝 Registrar conformidad de pedidos</h1>
+  <button class="btn-volver" onclick="location.href='main.html'">← Volver a Casos de Uso</button>
+</header>
+
+<main>
+  <p class="descripcion">
+    En esta interfaz el despachador revisa los pedidos realizados por canal online,
+    valida sus datos y registra la <b>conformidad</b> para que el pedido pueda ser
+    entregado al chofer o quedar listo para recojo en tienda.
+  </p>
+
+  <!-- FILTROS -->
+  <section class="card">
+    <h2>Filtros</h2>
+    <div class="grid-3">
+      <div>
+        <label>Buscar por código o cliente</label>
+        <input type="text" id="filtro-busqueda" placeholder="Ej: PV-0001, Juan Pérez">
+      </div>
+      <div>
+        <label>Estado de conformidad</label>
+        <select id="filtro-estado">
+          <option value="todos">Todos</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="conforme">Conforme</option>
+          <option value="no-conforme">No conforme</option>
+        </select>
+      </div>
+      <div>
+        <label>Modalidad</label>
+        <select id="filtro-modalidad">
+          <option value="todas">Todas</option>
+          <option value="Recojo en tienda">Recojo en tienda</option>
+          <option value="Entrega a domicilio">Entrega a domicilio</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLA PRINCIPAL -->
+  <section class="card">
+    <h2>Pedidos pendientes de conformidad</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Cant.</th>
+          <th>Modalidad</th>
+          <th>Estado</th>
+          <th>Conformidad</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-pedidos">
+        <!-- JS inserta filas -->
+      </tbody>
+    </table>
+    <p id="resumen" class="resumen"></p>
+  </section>
+</main>
+
+<!-- MODAL DETALLE / CONFORMIDAD -->
+<div id="overlay" class="overlay hidden">
+  <div class="modal">
+    <h3>Revisión de pedido</h3>
+
+    <div id="detalle-pedido" class="detalle">
+      <!-- JS coloca info del pedido -->
+    </div>
+
+    <form id="form-conformidad">
+      <fieldset>
+        <legend>Resultado de la revisión</legend>
+
+        <div class="opciones">
+          <label>
+            <input type="radio" name="conformidad" value="conforme" required>
+            Conforme
+          </label>
+          <label>
+            <input type="radio" name="conformidad" value="no-conforme">
+            No conforme
+          </label>
+        </div>
+
+        <label>Destino del pedido</label>
+        <select id="destino">
+          <option value="Chofer – reparto a domicilio">Entregar al chofer para reparto</option>
+          <option value="Listo para recojo en tienda">Listo para recojo en tienda</option>
+        </select>
+
+        <label>Observaciones</label>
+        <textarea id="observaciones" rows="3"
+          placeholder="Ej: Producto en buen estado, dirección confirmada con el cliente."></textarea>
+      </fieldset>
+
+      <div class="acciones-modal">
+        <button type="submit" class="btn-primario">Guardar conformidad</button>
+        <button type="button" class="btn-secundario" onclick="cerrarModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="conformidad.js"></script>
+</body>
+</html>

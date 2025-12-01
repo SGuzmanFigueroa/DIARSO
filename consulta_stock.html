@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stock.css">
+</head>
+<body>
+    <header class="topbar">
+  <h1>📦 Consulta de Stock</h1>
+  <div class="top-actions">
+    <button class="btn-volver" onclick="location.href='index.html'">← Volver al sistema</button>
+  </div>
+</header>
+
+<main>
+  <p class="descripcion">
+    Vendedor y almacenero consultan el inventario en tiempo real. El stock se
+    alimenta de la misma base usada en el catálogo y en los pedidos.
+  </p>
+
+  <!-- FILTROS -->
+  <section class="card filtros">
+    <div class="grid-3">
+      <div>
+        <label>Buscar producto</label>
+        <input type="text" id="buscar-stock" placeholder="Nombre o código">
+      </div>
+      <div>
+        <label>Estado de stock</label>
+        <select id="filtro-estado">
+          <option value="todos">Todos</option>
+          <option value="normal">Normal</option>
+          <option value="bajo">Stock bajo (&lt; mínimo)</option>
+          <option value="sin">Sin stock</option>
+        </select>
+      </div>
+      <div>
+        <label>Categoría</label>
+        <select id="filtro-categoria">
+          <option value="todas">Todas</option>
+          <option value="Frutas y Verduras">Frutas y Verduras</option>
+          <option value="Abarrotes">Abarrotes</option>
+          <option value="Lácteos">Lácteos</option>
+          <option value="Bebidas">Bebidas</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLA PRINCIPAL -->
+  <section class="card">
+    <h2>Inventario actual</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Producto</th>
+          <th>Categoría</th>
+          <th>Stock</th>
+          <th>Mínimo</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-stock">
+        <!-- JS rellena filas -->
+      </tbody>
+    </table>
+
+    <p class="resumen" id="resumen-stock">
+      <!-- JS escribe totales -->
+    </p>
+  </section>
+
+  <!-- ACTUALIZAR STOCK (ALMACENERO) -->
+  <section class="card">
+    <h2>Actualizar stock (Almacenero)</h2>
+    <p class="descripcion">
+      Permite registrar ingresos o salidas de productos. Se actualiza la misma
+      base de datos usada por el catálogo y los pedidos.
+    </p>
+
+    <form id="form-ajuste">
+      <div class="grid-3">
+        <div>
+          <label>Producto</label>
+          <select id="ajuste-producto"></select>
+        </div>
+        <div>
+          <label>Cantidad (+ ingresa / - descuenta)</label>
+          <input type="number" id="ajuste-cantidad" value="1">
+        </div>
+        <div>
+          <label>Motivo</label>
+          <select id="ajuste-motivo">
+            <option value="Ingreso">Ingreso de mercadería</option>
+            <option value="Venta offline">Venta en tienda física</option>
+            <option value="Devolución">Devolución</option>
+            <option value="Merma">Merma</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn">Aplicar ajuste</button>
+    </form>
+  </section>
+</main>
+
+<script src="stock.js"></script>
+</body>
+</html>
