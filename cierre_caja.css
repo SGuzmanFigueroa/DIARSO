@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f3f4f7;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(90deg, #d50000, #ff7043);
+  color: #fff;
+  padding: 12px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+header small {
+  font-size: 12px;
+}
+
+/* LAYOUT GENERAL */
+main {
+  padding: 18px 22px 40px;
+}
+
+.descripcion {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #e0e0e0;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* TARJETAS */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.subcard {
+  background: #fafafa;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+/* FORMULARIO LOGIN */
+label {
+  display: block;
+  font-size: 13px;
+  margin: 5px 0 2px;
+}
+
+input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form-inline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  align-items: end;
+}
+
+/* BOTONES */
+.btn {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 4px;
+  border: none;
+  background: #d50000;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background: #b71c1c;
+  transform: translateY(-1px);
+}
+
+.btn-confirmar {
+  min-width: 220px;
+}
+
+/* TEXTO AUXILIAR */
+.nota {
+  font-size: 11px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.msg-error {
+  font-size: 12px;
+  color: #b71c1c;
+  margin-top: 4px;
+}
+
+.msg-ok {
+  font-size: 13px;
+  color: #2e7d32;
+  margin-top: 8px;
+}
+
+/* RESUMEN */
+.resumen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* TABLA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+th, td {
+  border: 1px solid #e0e0e0;
+  padding: 5px 6px;
+  text-align: left;
+}
+
+th {
+  background: #f5f5f5;
+}
+
+/* ACCIONES CIERRE */
+.acciones-cierre {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* UTILIDADES */
+.hidden {
+  display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .resumen-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .form-inline {
+    grid-template-columns: 1fr;
+  }
+}

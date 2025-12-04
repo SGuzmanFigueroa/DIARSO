@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f3f4f7;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #00695c, #26a69a);
+  color: #fff;
+  padding: 12px 20px;
+}
+
+header small {
+  font-size: 12px;
+}
+
+/* Main */
+main {
+  padding: 20px;
+}
+
+.btn-volver {
+  background: #ccc;
+  padding: 6px 11px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-top: 8px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+
+.btn {
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: #00897b;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #00695c;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+th {
+  background: #e0f2f1;
+}
+
+.badge {
+  padding: 3px 7px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.badge-pendiente {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge-aprobada {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-rechazada {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.msg-ok {
+  color: #2e7d32;
+  font-size: 14px;
+}

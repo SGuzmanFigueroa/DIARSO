@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generar reportes de stock – Almacenero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="almacenero_reportes_stock.css">
+</head>
+<body>
+
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Actor: Almacenero – Generar reportes de stock</small>
+</header>
+
+<main>
+
+  <button class="btn-volver" onclick="location.href='actor_almacenero.html'">
+    ← Volver a Actor Almacenero
+  </button>
+
+  <!-- FILTROS -->
+  <section class="card">
+    <h2>Filtros del reporte</h2>
+    <p class="descripcion">
+      Filtra los productos por estado de stock, categoría u orden de listado.
+    </p>
+
+    <div class="grid-3">
+      <div>
+        <label>Estado de stock</label>
+        <select id="filtro-estado">
+          <option value="todos">Todos</option>
+          <option value="conStock">Con stock</option>
+          <option value="bajo">Stock bajo (por debajo del punto de reorden)</option>
+          <option value="sin">Sin stock / quiebre</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Categoría</label>
+        <select id="filtro-categoria">
+          <option value="todas">Todas</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Ordenar por</label>
+        <select id="ordenar-por">
+          <option value="nombre">Nombre</option>
+          <option value="stockDesc">Stock (de mayor a menor)</option>
+          <option value="stockAsc">Stock (de menor a mayor)</option>
+          <option value="vendidosDesc">Más vendidos</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="btn-aplicar" class="btn">Aplicar filtro</button>
+  </section>
+
+  <!-- RESUMEN -->
+  <section class="card">
+    <h2>Resumen de stock</h2>
+    <p class="descripcion">
+      Indicadores generales de existencias, quiebres y productos más vendidos.
+    </p>
+
+    <div class="resumen-grid">
+      <div class="mini-card">
+        <h3>Total de productos</h3>
+        <p class="valor" id="res-total">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Con stock</h3>
+        <p class="valor" id="res-con-stock">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Sin stock (quiebres)</h3>
+        <p class="valor" id="res-sin-stock">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Stock bajo</h3>
+        <p class="valor" id="res-bajo">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Unidades totales en almacén</h3>
+        <p class="valor" id="res-unidades">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Producto más vendido</h3>
+        <p class="valor" id="res-top-vendido">–</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLA -->
+  <section class="card">
+    <h2>Detalle de productos</h2>
+    <p class="descripcion">
+      Reporte detallado de existencias, punto de reorden y ventas por producto.
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Código</th>
+        <th>Producto</th>
+        <th>Categoría</th>
+        <th>Stock actual</th>
+        <th>Punto reorden</th>
+        <th>Vendidos</th>
+        <th>Estado</th>
+      </tr>
+      </thead>
+      <tbody id="tbody-stock"></tbody>
+    </table>
+
+    <p class="nota">
+      * Datos de demostración. Esta pantalla representa los reportes de existencias,
+      quiebres y productos más vendidos del almacén.
+    </p>
+  </section>
+
+</main>
+
+<script src="almacenero_reportes_stock.js"></script>
+</body>
+</html>

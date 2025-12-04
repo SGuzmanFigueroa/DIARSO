@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generar reportes – Almacenero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="almacenero_reportes.css">
+</head>
+<body>
+
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Actor: Almacenero – Generar reportes globales de pedidos y ventas</small>
+</header>
+
+<main>
+
+  <button class="btn-volver" onclick="location.href='actor_almacenero.html'">
+    ← Volver a Actor Almacenero
+  </button>
+
+  <!-- FILTROS -->
+  <section class="card">
+    <h2>Filtros del reporte</h2>
+    <p class="descripcion">
+      Selecciona el rango de fechas y el tipo de información a analizar.
+    </p>
+
+    <div class="grid-3">
+      <div>
+        <label>Desde</label>
+        <input type="date" id="fecha-desde">
+      </div>
+      <div>
+        <label>Hasta</label>
+        <input type="date" id="fecha-hasta">
+      </div>
+      <div>
+        <label>Tipo de reporte</label>
+        <select id="tipo-reporte">
+          <option value="todos">Pedidos y ventas</option>
+          <option value="pedidos">Solo pedidos</option>
+          <option value="ventas">Solo ventas (pagados)</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="btn-generar" class="btn">Generar reporte</button>
+  </section>
+
+  <!-- RESUMEN -->
+  <section class="card">
+    <h2>Resumen</h2>
+    <p class="descripcion">
+      Indicadores generales del período seleccionado.
+    </p>
+
+    <div class="resumen-grid">
+      <div class="mini-card">
+        <h3>Total de pedidos</h3>
+        <p class="valor" id="sum-pedidos">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Pedidos entregados</h3>
+        <p class="valor" id="sum-entregados">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Pedidos pendientes / en proceso</h3>
+        <p class="valor" id="sum-pendientes">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Pedidos cancelados</h3>
+        <p class="valor" id="sum-cancelados">0</p>
+      </div>
+      <div class="mini-card">
+        <h3>Monto total de ventas (S/)</h3>
+        <p class="valor" id="sum-monto">0.00</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLA DETALLE -->
+  <section class="card">
+    <h2>Detalle de pedidos</h2>
+    <p class="descripcion">
+      Pedidos incluidos en el reporte generado.
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Código</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Canal</th>
+        <th>Estado</th>
+        <th>Monto (S/)</th>
+      </tr>
+      </thead>
+      <tbody id="tbody-detalle">
+      <!-- filas dinámicas -->
+      </tbody>
+    </table>
+
+    <p class="nota">
+      * Datos de demostración. En un entorno real se obtendrían desde la base de datos del sistema.
+    </p>
+  </section>
+
+</main>
+
+<script src="almacenero_reportes.js"></script>
+</body>
+</html>

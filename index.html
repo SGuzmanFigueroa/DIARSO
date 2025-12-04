@@ -21,11 +21,6 @@
 
     <div class="grid-casos">
 
-      <div class="card card-click" onclick="openLogin('cliente')">
-        <h3>🧑‍💻 Cliente</h3>
-        <p>Realiza pedidos online y consulta sus compras.</p>
-      </div>
-
       <div class="card card-click" onclick="openLogin('despachador')">
         <h3>📦 Despachador</h3>
         <p>Registra la conformidad de pedidos.</p>
@@ -61,11 +56,6 @@
         <p>Aprueba solicitudes del almacén.</p>
       </div>
 
-      <div class="card card-click" onclick="openLogin('usuario')">
-        <h3>🔐 Usuario del sistema</h3>
-        <p>Administra su clave y acceso.</p>
-      </div>
-
     </div>
   </section>
 </main>
@@ -75,13 +65,55 @@
   <div class="modal-box">
     <h3 id="login-title">Iniciar sesión</h3>
 
-    <label>Contraseña</label>
-    <input type="password" id="actor-pass" placeholder="Ingrese contraseña">
+    <!-- pestañas -->
+    <div class="tabs-login">
+      <button id="tab-login" class="tab-btn active" onclick="showLoginTab()">
+        Iniciar sesión
+      </button>
+      <button id="tab-change" class="tab-btn" onclick="showChangeTab()">
+        Cambiar contraseña
+      </button>
+    </div>
 
-    <p id="login-error" style="color:red;display:none;font-size:12px;">Contraseña incorrecta</p>
+    <!-- PANEL LOGIN -->
+    <div id="panel-login">
+      <label>Contraseña</label>
+      <input type="password" id="actor-pass" placeholder="Ingrese contraseña">
 
-    <button class="btn" onclick="doLogin()">Ingresar</button>
-    <button class="btn-volver-actores" onclick="closeLogin()">Cancelar</button>
+      <p id="login-error" style="color:red;display:none;font-size:12px;">
+        Contraseña incorrecta
+      </p>
+
+      <div class="btn-row">
+        <button class="btn" onclick="doLogin()">Ingresar</button>
+        <button class="btn-volver-actores" onclick="closeLogin()">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- PANEL CAMBIO DE CONTRASEÑA -->
+    <div id="panel-change" class="panel-hidden">
+      <label>Contraseña actual</label>
+      <input type="password" id="pass-actual" placeholder="Ingrese contraseña actual">
+
+      <label>Nueva contraseña</label>
+      <input type="password" id="pass-nueva" placeholder="Ingrese nueva contraseña">
+
+      <label>Confirmar nueva contraseña</label>
+      <input type="password" id="pass-nueva-2" placeholder="Repita nueva contraseña">
+
+      <p id="change-error" style="color:red;display:none;font-size:12px;">
+        Error al cambiar la contraseña.
+      </p>
+      <p id="change-ok" style="color:green;display:none;font-size:12px;">
+        Contraseña actualizada correctamente.
+      </p>
+
+      <div class="btn-row">
+        <button class="btn" onclick="changePassword()">Guardar</button>
+        <button class="btn-volver-actores" onclick="closeLogin()">Cancelar</button>
+      </div>
+    </div>
+
   </div>
 </div>
 

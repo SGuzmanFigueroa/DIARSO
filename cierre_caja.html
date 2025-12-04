@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cierre_caja.css">
+</head>
+<body>
+    <header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Actor: Caja – Cierre de Caja</small>
+</header>
+
+<main>
+  <button class="btn-volver" onclick="location.href='actor_caja.html'">
+    ← Volver a actor Caja
+  </button>
+
+  <!-- LOGIN PARA CIERRE -->
+  <section class="card">
+    <h2>Acceso para cierre de caja</h2>
+    <p class="descripcion">
+      Solo personal autorizado puede realizar el cierre de caja al finalizar el turno.
+    </p>
+
+    <form id="form-login-cierre" class="form-inline">
+      <div>
+        <label>Código de cajero</label>
+        <input type="text" id="cierre-user" placeholder="Ej: CAJA01" required>
+      </div>
+      <div>
+        <label>Contraseña</label>
+        <input type="password" id="cierre-pass" placeholder="****" required>
+      </div>
+      <button type="submit" class="btn">Ingresar para cierre</button>
+    </form>
+
+    <p class="nota">
+      Demo: usuario <b>CAJA01</b> – contraseña <b>1234</b>.
+    </p>
+    <p id="login-error" class="msg-error hidden">Credenciales incorrectas.</p>
+  </section>
+
+  <!-- RESUMEN DE CAJA -->
+  <section class="card" id="panel-resumen" style="display:none;">
+    <h2>Resumen de caja del día</h2>
+    <p class="descripcion">
+      Se muestra el resumen de los pagos registrados antes de confirmar el cierre.
+    </p>
+
+    <div class="resumen-grid">
+      <div class="subcard">
+        <h3>Totales generales</h3>
+        <p><b>N° de boletas:</b> <span id="lbl-cant-boletas">0</span></p>
+        <p><b>Total ventas del día:</b> <span id="lbl-total-dia">S/ 0.00</span></p>
+        <p><b>Último cierre registrado:</b> <span id="lbl-ultimo-cierre">-</span></p>
+      </div>
+
+      <div class="subcard">
+        <h3>Totales por método de pago</h3>
+        <p>Efectivo: <span id="lbl-total-efectivo">S/ 0.00</span></p>
+        <p>Tarjeta: <span id="lbl-total-tarjeta">S/ 0.00</span></p>
+        <p>Yape / Plin: <span id="lbl-total-yape">S/ 0.00</span></p>
+      </div>
+    </div>
+
+    <div class="subcard">
+      <h3>Detalle de pagos registrados</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>Boleta</th>
+          <th>Fecha / Hora</th>
+          <th>DNI Cliente</th>
+          <th>Método</th>
+          <th>Total (S/)</th>
+        </tr>
+        </thead>
+        <tbody id="tbody-pagos">
+        <!-- se llena por JS -->
+        </tbody>
+      </table>
+      <p class="nota">
+        Si no hay pagos en la sesión, se muestran datos de demostración.
+      </p>
+    </div>
+
+    <div class="acciones-cierre">
+      <button id="btn-confirmar-cierre" class="btn btn-confirmar">
+        Confirmar cierre de caja
+      </button>
+      <p id="msg-cierre" class="msg-ok hidden"></p>
+    </div>
+  </section>
+</main>
+
+<script src="cierre_caja.js"></script>
+</body>
+</html>

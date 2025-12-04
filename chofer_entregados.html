@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar lista de pedidos entregados – Chofer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="chofer_entregados.css">
+</head>
+<body>
+
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Actor: Chofer – Actualizar lista de pedidos entregados</small>
+</header>
+
+<main>
+  <button class="btn-volver" onclick="location.href='actor_chofer.html'">
+    ← Volver a actor Chofer
+  </button>
+
+  <!-- RESUMEN -->
+  <section class="card">
+    <h2>Resumen de entregas</h2>
+    <p class="descripcion">
+      El chofer visualiza sus pedidos asignados a domicilio y actualiza el estado
+      a medida que los entrega.
+    </p>
+
+    <div class="resumen-grid">
+      <div class="subcard">
+        <p><b>Total de pedidos:</b> <span id="lbl-total">0</span></p>
+        <p><b>Pendientes:</b> <span id="lbl-pendientes">0</span></p>
+        <p><b>Entregados:</b> <span id="lbl-entregados">0</span></p>
+        <p><b>No entregados:</b> <span id="lbl-no-entregados">0</span></p>
+      </div>
+
+      <div class="subcard">
+        <h3>Filtros</h3>
+        <label>Buscar por código o cliente</label>
+        <input type="text" id="txt-buscar" placeholder="Ej: PV-0005 o Juan">
+
+        <label>Estado</label>
+        <select id="filtro-estado">
+          <option value="todos">Todos</option>
+          <option value="pendiente">Pendientes</option>
+          <option value="entregado">Entregados</option>
+          <option value="no_entregado">No entregados</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA DE PEDIDOS -->
+  <section class="card">
+    <h2>Pedidos asignados al chofer</h2>
+    <p class="descripcion">
+      Selecciona un pedido y marca si fue entregado o no entregado. Los cambios se
+      guardan en la “base de datos” interna (localStorage).
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Código</th>
+        <th>Cliente</th>
+        <th>Dirección</th>
+        <th>Ventana de entrega</th>
+        <th>Estado actual</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody id="tbody-pedidos">
+      <!-- filas dinámicas -->
+      </tbody>
+    </table>
+
+    <p class="nota">
+      Demo: si no hay pedidos guardados en el sistema, se cargan pedidos de ejemplo.
+    </p>
+  </section>
+
+  <!-- MENSAJE -->
+  <section class="card" id="panel-mensaje" style="display:none;">
+    <p id="msg-chofer" class="msg-ok"></p>
+  </section>
+</main>
+
+<script src="chofer_entregados.js"></script>
+</body>
+</html>

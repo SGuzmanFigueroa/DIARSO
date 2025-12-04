@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aprobar solicitud del almacén – Supervisor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="supervisor_aprobar.css">
+</head>
+<body>
+
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Actor: Supervisor de ventas online – Aprobar solicitud del almacén</small>
+</header>
+
+<main>
+  <button class="btn-volver" onclick="location.href='actor_supervisor.html'">
+    ← Volver a actor Supervisor
+  </button>
+
+  <!-- RESUMEN -->
+  <section class="card">
+    <h2>Resumen de solicitudes</h2>
+    <p class="descripcion">
+      El supervisor revisa las solicitudes que envía el almacén (reposiciones de stock
+      y pedidos especiales) y decide si las aprueba o rechaza.
+    </p>
+
+    <div class="resumen-grid">
+      <div class="subcard">
+        <p><b>Total de solicitudes:</b> <span id="lbl-total">0</span></p>
+        <p><b>Pendientes:</b> <span id="lbl-pendientes">0</span></p>
+        <p><b>Aprobadas:</b> <span id="lbl-aprobadas">0</span></p>
+        <p><b>Rechazadas:</b> <span id="lbl-rechazadas">0</span></p>
+      </div>
+
+      <div class="subcard">
+        <h3>Filtros</h3>
+        <label>Buscar por código o motivo</label>
+        <input type="text" id="txt-buscar" placeholder="Ej: SOL-0005 o 'Reposición'">
+
+        <label>Estado</label>
+        <select id="filtro-estado">
+          <option value="todos">Todos</option>
+          <option value="pendiente">Pendientes</option>
+          <option value="aprobada">Aprobadas</option>
+          <option value="rechazada">Rechazadas</option>
+        </select>
+
+        <label>Prioridad</label>
+        <select id="filtro-prioridad">
+          <option value="todas">Todas</option>
+          <option value="alta">Alta</option>
+          <option value="media">Media</option>
+          <option value="baja">Baja</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA DE SOLICITUDES -->
+  <section class="card">
+    <h2>Solicitudes enviadas por el almacén</h2>
+    <p class="descripcion">
+      Selecciona una solicitud y aprueba o rechaza. El resultado se guarda en la
+      “base de datos” interna (localStorage) para que el almacenero vea la respuesta.
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Código</th>
+        <th>Fecha / Hora</th>
+        <th>Tipo</th>
+        <th>Motivo</th>
+        <th>Prioridad</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody id="tbody-solicitudes">
+      <!-- filas dinámicas -->
+      </tbody>
+    </table>
+
+    <p class="nota">
+      Demo: si no hay solicitudes guardadas en el sistema, se cargan solicitudes de ejemplo.
+    </p>
+  </section>
+
+  <!-- MENSAJE -->
+  <section class="card" id="panel-mensaje" style="display:none;">
+    <p id="msg-supervisor" class="msg-ok"></p>
+  </section>
+</main>
+
+<script src="supervisor_aprobar.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Enviar solicitud al supervisor – Almacenero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="almacenero_solicitud.css">
+</head>
+<body>
+
+<header>
+  <h1>Plaza Vea – Gestión de Pedidos</h1>
+  <small>Actor: Almacenero – Enviar solicitud al supervisor</small>
+</header>
+
+<main>
+
+  <button class="btn-volver" onclick="location.href='actor_almacenero.html'">
+    ← Volver a Actor Almacenero
+  </button>
+
+  <section class="card">
+    <h2>Registrar nueva solicitud</h2>
+    <p class="descripcion">
+      Completa los datos y envía la solicitud al supervisor para continuar el flujo del proceso.
+    </p>
+
+    <form id="form-solicitud">
+
+      <label>Tipo de solicitud</label>
+      <select id="tipo" required>
+        <option value="Reposición de stock">Reposición de stock</option>
+        <option value="Pedido especial">Pedido especial</option>
+      </select>
+
+      <label>Motivo</label>
+      <textarea id="motivo" rows="3" placeholder="Describe el motivo..." required></textarea>
+
+      <label>Prioridad</label>
+      <select id="prioridad" required>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+        <option value="baja">Baja</option>
+      </select>
+
+      <button type="submit" class="btn">Enviar solicitud</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Solicitudes enviadas</h2>
+    <p class="descripcion">
+      Estado actual de las solicitudes enviadas. El supervisor puede aprobar o rechazar desde su panel.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Fecha</th>
+          <th>Tipo</th>
+          <th>Motivo</th>
+          <th>Prioridad</th>
+          <th>Estado</th>
+          <th>Observación del supervisor</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-lista"></tbody>
+    </table>
+  </section>
+
+  <section class="card" id="panel-msg" style="display:none;">
+    <p id="msg" class="msg-ok"></p>
+  </section>
+
+</main>
+
+<script src="almacenero_solicitud.js"></script>
+</body>
+</html>
