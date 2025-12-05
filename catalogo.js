@@ -9,7 +9,7 @@ const productos = [
     precioAnterior: 6.49,
     precioOferta: 5.80,
     descuento: 10,
-    img: "https://i.imgur.com/H8Ff7PQ.jpeg"
+    img: "img/tomateitaliano.jpg"
   },
   {
     id: "P002",
@@ -20,7 +20,7 @@ const productos = [
     precioAnterior: 6.89,
     precioOferta: 5.48,
     descuento: 20,
-    img: "https://i.imgur.com/8oRk3fC.jpeg"
+    img: "img/papaamarilla.jpg"
   },
   {
     id: "P003",
@@ -31,7 +31,7 @@ const productos = [
     precioAnterior: 5.80,
     precioOferta: 4.90,
     descuento: 15,
-    img: "https://i.imgur.com/3f8lf1y.jpeg"
+    img: "img/lechegloriaentera1l.png"
   },
   {
     id: "P004",
@@ -42,7 +42,7 @@ const productos = [
     precioAnterior: 28.90,
     precioOferta: 25.50,
     descuento: 12,
-    img: "https://i.imgur.com/6T1tdqj.jpeg"
+    img: "img/Arroz Costeño Superior 5kg.png"
   },
   {
     id: "P005",
@@ -53,7 +53,7 @@ const productos = [
     precioAnterior: 14.00,
     precioOferta: 11.90,
     descuento: 15,
-    img: "https://i.imgur.com/O6zi0hi.jpeg"
+    img: "img/Aceite Primor 1L.jpg"
   },
   {
     id: "P006",
@@ -64,9 +64,120 @@ const productos = [
     precioAnterior: 6.50,
     precioOferta: 5.50,
     descuento: 15,
-    img: "https://i.imgur.com/1PjvRzK.jpeg"
+    img: "img/Gaseosa Inca Kola 1.5L.jpg"
+  },
+  {
+    id: "P007",
+    nombre: "Yogurt Laive Fresa 1L",
+    marca: "LAIVE",
+    categoria: "Lácteos",
+    unidad: "1 Und. = 1L",
+    precioAnterior: 8.50,
+    precioOferta: 7.20,
+    descuento: 15,
+    img: "img/Yogurt Laive Fresa 1L.png"
+  },
+  {
+    id: "P008",
+    nombre: "Coca Cola 2.25L",
+    marca: "COCA COLA",
+    categoria: "Bebidas",
+    unidad: "1 Und. = 2.25L",
+    precioAnterior: 9.50,
+    precioOferta: 7.90,
+    descuento: 17,
+    img: "img/Coca Cola 2.25L.jpg"
+  },
+  {
+    id: "P009",
+    nombre: "Pan Molde Bimbo Blanco 600g",
+    marca: "BIMBO",
+    categoria: "Abarrotes",
+    unidad: "1 Und. = 600g",
+    precioAnterior: 7.80,
+    precioOferta: 6.50,
+    descuento: 17,
+    img: "img/Pan Molde Bimbo Blanco 600g.png"
+  },
+  {
+    id: "P010",
+    nombre: "Plátano de Seda x kg",
+    marca: "PLAZA VEA",
+    categoria: "Frutas y Verduras",
+    unidad: "1 Und. ≈ 1 kg",
+    precioAnterior: 4.50,
+    precioOferta: 3.80,
+    descuento: 15,
+    img: "img/Plátano de Seda x kg.jpg"
+  },
+  {
+    id: "P011",
+    nombre: "Queso Edam Bonlé 250g",
+    marca: "BONLÉ",
+    categoria: "Lácteos",
+    unidad: "1 Und. = 250g",
+    precioAnterior: 12.90,
+    precioOferta: 10.90,
+    descuento: 15,
+    img: "img/Queso Edam Bonlé 250g.png"
+  },
+  {
+    id: "P012",
+    nombre: "Atún Florida en Agua 170g",
+    marca: "FLORIDA",
+    categoria: "Abarrotes",
+    unidad: "1 Und. = 170g",
+    precioAnterior: 7.50,
+    precioOferta: 6.20,
+    descuento: 17,
+    img: "img/Atún Florida en Agua 170g.jpg"
+  },
+  {
+    id: "P013",
+    nombre: "Agua San Luis 2.5L",
+    marca: "SAN LUIS",
+    categoria: "Bebidas",
+    unidad: "1 Und. = 2.5L",
+    precioAnterior: 4.20,
+    precioOferta: 3.50,
+    descuento: 17,
+    img: "img/Agua San Luis 2.5L.png"
+  },
+  {
+    id: "P014",
+    nombre: "Manzana Israel x kg",
+    marca: "PLAZA VEA",
+    categoria: "Frutas y Verduras",
+    unidad: "1 Und. ≈ 1 kg",
+    precioAnterior: 6.90,
+    precioOferta: 5.80,
+    descuento: 15,
+    img: "img/Manzana Israel x kg.png"
+  },
+  {
+    id: "P015",
+    nombre: "Huevos Pardos x 15 und",
+    marca: "AVINKA",
+    categoria: "Abarrotes",
+    unidad: "1 Paq. = 15 und",
+    precioAnterior: 12.00,
+    precioOferta: 10.00,
+    descuento: 17,
+    img: "img/Huevos Pardos x 15 und.jpg"
+  },
+  {
+    id: "P016",
+    nombre: "Yogurt Gloria Batido Durazno 1kg",
+    marca: "GLORIA",
+    categoria: "Lácteos",
+    unidad: "1 Und. = 1kg",
+    precioAnterior: 10.50,
+    precioOferta: 8.90,
+    descuento: 15,
+    img: "img/Yogurt Gloria Batido Durazno 1kg.png"
   }
 ];
+
 
 const STORAGE_KEY = "carrito_plazavea";
 
